@@ -9,7 +9,7 @@ params:
 
   homeInfoParams:
       Title: "Olá!"
-      Content: "Escrevendo sobre Programação, Ciência e Matemática!"
+      Content: "Textos sobre Programação, Ciência e Matemática!"
 
   socialIcons:
     - name: github
@@ -48,6 +48,10 @@ languages:
           name: Sobre mim
           url: /aboutme/
           weight: 20
+        - identifier: archives
+          name: Blog Posts
+          url: /archives/
+          weight: 30
   
   en:
     languageName: "English :uk:"
@@ -63,6 +67,10 @@ languages:
           name: About me
           url: /aboutme/
           weight: 20
+        - identifier: archives
+          name: Blog Posts
+          url: /archives/
+          weight: 30
     
     homeInfoParams:
       Title: "Hello!"

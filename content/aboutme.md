@@ -1,34 +1,34 @@
-# Pedro Falcão 
-```Data Engineer @ Descomplica 🇧🇷``` 
+# Pedro Falcão
 
-## About me: 
+```Engenheiro de Dados @ Descomplica 🇧🇷```
 
-I've graduated in **Mechanical Engineering**, from the **University of São Paulo**, but, since before<br> that I've been working in data. I've began learning Python and machine learning concepts from my first year in university, in 2017, and since then, my interest in programming always grew. My ultimate passion is **sharing knowledge**, so for many years I've worked on building projects that could help me on that goal, including teaching and writing a science communication blog. Currently most of my free time goes into builiding a basis of knowledge that will allow me to **create an avenue for teaching concepts in STEM**, I've many plans for the future, and hope to share all that soon. 
+## Sobre mim:
 
-I'm passionate about open-source, and try to use and support FOSS always (I daily drive Fedora), thus am open to contributing with any such project. Besides that, I'd love to help out on more mathematical focused projects (Such as optimization problems and simulations) and data analysis. If you want to talk, just hit me up in my [LinkedIn](https://www.linkedin.com/in/pfalcao97/) <img width = "17px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" />! 
+Sou formado em **Engenharia Mecânica**, pela **Universidade de São Paulo**, mas, desde antes disso, trabalho com dados. Comecei a aprender conceitos de Python e aprendizado de máquina desde meu primeiro ano da universidade, em 2017, e desde então meu interesse por programação sempre cresceu. Minha maior paixão é **compartilhar conhecimento**, então, por muitos anos, trabalhei na construção de projetos que poderiam me ajudar com esse objetivo, incluindo dar aulas e escrever um blog de comunicação científica. Atualmente, a maior parte do meu tempo livre é voltada para adquirir conhecimento que me permita **criar um canal para o ensino de conceitos em STEM** (Sigla em inglês que significa Ciência, Tecnologia, Engenharia e Matemática). Tenho muitos planos para o futuro e espero compartilhar tudo isso em breve.
+
+Sou apaixonado pela filosofia Open Source e tento usar e dar suporte ao movimento FOSS sempre que possível, portanto, estou aberto a contribuir com qualquer projeto desse tipo. Além disso, adoraria ajudar em projetos mais focados em matemática (como problemas de otimização e simulações) e análise de dados. Se quiser conversar é só me chamar no meu [LinkedIn](https://www.linkedin.com/in/pfalcao97/)! 
           
 
 
-
-## Development: 
+## Desenvolvimento:
 
 ![Developcat](https://media2.giphy.com/media/aNqEFrYVnsS52/giphy.gif)
 
-My day job is as a **Data Enginner**, at an brazilian education company, [Descomplica](https://descomplica.com.br/). I work daily with **Python**, **SQL**, **GCP**, **Bash**, **Docker**, **Airflow** and **UNIX systems**. I'm also learning **Rust** on my free time, so that could pop off now and again over here! <br>
+Meu trabalho é como **Engenheiro de Dados**, em uma empresa brasileira de educação, [Descomplica](https://descomplica.com.br/). Trabalho diariamente com sistemas **Python**, **SQL**, **GCP**, **Bash**, **Docker**, **Airflow** e **UNIX**. Também estou aprendendo **Rust** no meu tempo livre, então isso pode aparecer de vez em quando aqui! <br>
 
-As stated, I've worked professionally on developing in (but no included to) data, so under my belt I've _dozens_ of projects on **automation**, **optmization of processes**, **Extracting-Treating-Loading pipelines**, **Writing complex Data Analysis reports**, **creating Machine Learning projects**, **developing algorithms**, **creating bots** (For plataforms like Telegram and Slack) and **data visualization**. I also have worked on minor projects for myself, especially data analysis and automation. One project I've worked on my free time, of which i'm particularly proud, was on automating a pipeline consisting of extracting unstructured data from a PDF file (Including turning it into a text file and then developing multiple complex RegEx codes to get exaclty the data I's interested in - Working with PDFs is notoriously dificult), treating them, because they had multiple date formats and more than one currency, and finally loading them into an excel sheet. This process was made to automate a common work problem for my lovely lawyer girlfriend. <br><br>
+Como comentei, já trabalhei profissionalmente no desenvolvimento de (mas não somente) sistemas de dados, então, em meu currículo, tenho _dezenas_ de projetos em **automação**, **otimização de processos**, **Extração-Tratamento- Carregamento de pipelines**, **Escrita de relatórios complexos de análise de dados**, **criação de projetos de Machine Learning**, **desenvolvimento de algoritmos**, **criação de bots** (para plataformas como Telegram e Slack) e **visualização de dados**. Também trabalhei em pequenos projetos para mim, especialmente análise de dados e automação. 
 
-![Work ethos](https://media.tenor.com/FCvzBQEEBpIAAAAd/sniper-tf2.gif)
+Um projeto em que trabalhei em meu tempo livre, do qual estou particularmente orgulhoso, foi automatizar um pipeline que consiste em extrair dados não estruturados de um arquivo PDF (incluindo transformá-lo em um arquivo de texto e, em seguida, desenvolver vários códigos RegEx complexos para obter exatamente os dados que me interessam - Trabalhar com PDFs é notoriamente difícil), tratá-los, porque eles tinham vários formatos de data e mais de uma moeda e, finalmente, carregá-los em uma planilha do Excel. Este processo foi feito para automatizar um problema de trabalho comum para minha adorável namorada advogada. <br><br>
+
+![Ethos de trabalho](https://media.tenor.com/FCvzBQEEBpIAAAAd/sniper-tf2.gif)
 
 
-## Postamble:
+## Postâmbulo:
 
-Okay, so that was all I had to say that was somewhat interesting. Now, to the part that you may skip without worrying: My likes and dislikes!
+Ok, então isso era tudo que eu tinha para dizer que era minimamente interessante. Agora, a parte que você pode pular sem se preocupar: _Meus gostos e desgostos_!
 
-Most of the time I'm doing that which I've described on the other sections, but I also regularly tinker with audio gear and with 3D printing. I've an Ender 3 3D printer, that I use to solve small conviniences in the lifes of the people around me and a plethora of audio gear, my favorite IEM is the Ikko OH10 (or Obsidian). I enjoy working out and running/walking around the city. I also love playing video-games, though that isn't something I do much anymore, between my favorite games, I can cite Disco Elysium, Half-Life and Deus Ex. My favorite show is Seinfeld, with whom, according to that lovely girlfriend I've talked about, I share many mannerisms. I try reading everyday before going to bed and my favorite genre is science communication.
+Na maioria das vezes, estou fazendo o que descrevi nas outras seções, mas também mexo regularmente com equipamentos de áudio e impressão 3D. Tenho uma impressora 3D Ender 3, que uso para resolver pequenas inconveniências na vida das pessoas ao meu redor e uma infinidade de equipamentos de áudio, meu IEM favorito é o Ikko OH10 (ou Obsidian). Gosto de malhar e correr/caminhar pela cidade. Também adoro jogar videogame, embora isso não seja algo que eu tenha tanto tempo hoje em dia, entre os meus jogos favoritos, posso citar Disco Elysium, Half-Life e Deus Ex. Meu seriado preferido é Seinfeld, com quem, segundo aquela linda namorada de quem falei, compartilho muitos maneirismos. Eu tento ler todos os dias antes de dormir e meu gênero favorito é a comunicação científica.
 
 {{< figure
 src="https://media3.giphy.com/media/2aAcLrYtiX8YM/giphy.gif"
 alt="Seinfeld" >}}
-
-<img src="https://media3.giphy.com/media/2aAcLrYtiX8YM/giphy.gif" style="display: block; margin-left: auto; margin-right: auto; width: 50%;"/>
