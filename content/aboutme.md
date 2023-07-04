@@ -11,8 +11,7 @@ Sou apaixonado pela filosofia Open Source e tento usar e dar suporte ao moviment
 
 
 ## Desenvolvimento:
-
-![Developcat](https://media2.giphy.com/media/aNqEFrYVnsS52/giphy.gif)
+{{< figure align="center" src="https://media2.giphy.com/media/aNqEFrYVnsS52/giphy.gif" >}}
 
 Meu trabalho é como **Engenheiro de Dados**, em uma empresa brasileira de educação, [Descomplica](https://descomplica.com.br/). Trabalho diariamente com sistemas **Python**, **SQL**, **GCP**, **Bash**, **Docker**, **Airflow** e **UNIX**. Também estou aprendendo **Rust** no meu tempo livre, então isso pode aparecer de vez em quando aqui! <br>
 
@@ -20,7 +19,7 @@ Como comentei, já trabalhei profissionalmente no desenvolvimento de (mas não s
 
 Um projeto em que trabalhei em meu tempo livre, do qual estou particularmente orgulhoso, foi automatizar um pipeline que consiste em extrair dados não estruturados de um arquivo PDF (incluindo transformá-lo em um arquivo de texto e, em seguida, desenvolver vários códigos RegEx complexos para obter exatamente os dados que me interessam - Trabalhar com PDFs é notoriamente difícil), tratá-los, porque eles tinham vários formatos de data e mais de uma moeda e, finalmente, carregá-los em uma planilha do Excel. Este processo foi feito para automatizar um problema de trabalho comum para minha adorável namorada advogada. <br><br>
 
-![Ethos de trabalho](https://media.tenor.com/FCvzBQEEBpIAAAAd/sniper-tf2.gif)
+{{< figure align="center" src="https://media.tenor.com/FCvzBQEEBpIAAAAd/sniper-tf2.gif" >}}
 
 
 ## Postâmbulo:
@@ -29,6 +28,5 @@ Ok, então isso era tudo que eu tinha para dizer que era minimamente interessant
 
 Na maioria das vezes, estou fazendo o que descrevi nas outras seções, mas também mexo regularmente com equipamentos de áudio e impressão 3D. Tenho uma impressora 3D Ender 3, que uso para resolver pequenas inconveniências na vida das pessoas ao meu redor e uma infinidade de equipamentos de áudio, meu IEM favorito é o Ikko OH10 (ou Obsidian). Gosto de malhar e correr/caminhar pela cidade. Também adoro jogar videogame, embora isso não seja algo que eu tenha tanto tempo hoje em dia, entre os meus jogos favoritos, posso citar Disco Elysium, Half-Life e Deus Ex. Meu seriado preferido é Seinfeld, com quem, segundo aquela linda namorada de quem falei, compartilho muitos maneirismos. Eu tento ler todos os dias antes de dormir e meu gênero favorito é a comunicação científica.
 
-{{< figure
-src="https://media3.giphy.com/media/2aAcLrYtiX8YM/giphy.gif"
-alt="Seinfeld" >}}
+
+{{< figure align="center" src="https://media3.giphy.com/media/2aAcLrYtiX8YM/giphy.gif" >}}
