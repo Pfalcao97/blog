@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <sitemap>
-    <loc>pfalcao97.githubpages.io/blog/en/sitemap.xml</loc>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>pfalcao97.githubpages.io/blog/pt/sitemap.xml</loc>
-    
-  </sitemap>
-  
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://pfalcao97.githubpages.io/blog/aboutme/</loc>
+    <priority>0</priority>
+  </url><url>
+    <loc>https://pfalcao97.githubpages.io/blog/</loc>
+  </url><url>
+    <loc>https://pfalcao97.githubpages.io/blog/archives/</loc>
+  </url><url>
+    <loc>https://pfalcao97.githubpages.io/blog/categories/</loc>
+  </url><url>
+    <loc>https://pfalcao97.githubpages.io/blog/search/</loc>
+  </url><url>
+    <loc>https://pfalcao97.githubpages.io/blog/tags/</loc>
+  </url>
+</urlset>

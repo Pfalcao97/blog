@@ -1,4 +1,4 @@
-baseURL: pfalcao97.githubpages.io/blog
+baseURL: "https://pfalcao97.githubpages.io/blog"
 theme: "PaperMod"
 
 enableEmoji: true
@@ -8,8 +8,8 @@ params:
   math: true
 
   homeInfoParams:
-      Title: "Olá!"
-      Content: "Textos sobre Programação, Ciência e Matemática!"
+    Title: "Olá!"
+    Content: "Textos sobre Programação, Ciência e Matemática!"
 
   socialIcons:
     - name: github
@@ -22,59 +22,32 @@ params:
   ShowShareButtons: true
 
 outputs:
-    home:
-        - HTML
-        - RSS
-        - JSON # is necessary
+  home:
+    - HTML
+    - RSS
+    - JSON
 
-# Language configuration 
+# Language configuration
 
-DefaultContentLanguage: pt 
+DefaultContentLanguage: pt
 defaultContentLanguageInSubdir: false
-
 
 languages:
   pt:
     languageName: "Português :brazil:"
-    title: Blog de Pedro Falcão
+    title: "Blog de Pedro Falcão"
 
     menu:
       main:
         - identifier: categories
-          name: Categorias
-          url: /categories/
+          name: "Categorias"
+          url: "/categories/"
           weight: 10
         - identifier: aboutme
-          name: Sobre mim
-          url: /aboutme/
+          name: "Sobre mim"
+          url: "/aboutme/"
           weight: 20
         - identifier: archives
           name: Blog Posts
           url: /archives/
           weight: 30
-  
-  en:
-    languageName: "English :uk:"
-    title: Pedro Falcao's Blog
-
-    menu:
-      main:
-        - identifier: categories
-          name: Categories
-          url: /categories/
-          weight: 10
-        - identifier: aboutme
-          name: About me
-          url: /aboutme/
-          weight: 20
-        - identifier: archives
-          name: Blog Posts
-          url: /archives/
-          weight: 30
-    
-    homeInfoParams:
-      Title: "Hello!"
-      Content: "Writing about STEM!"
-
-
-     
