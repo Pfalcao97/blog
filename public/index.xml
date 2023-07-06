@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Blog de Pedro Falcão</title>
+    <link>http://example.org/</link>
+    <description>Recent content on Blog de Pedro Falcão</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://example.org/aboutme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/aboutme/</guid>
+      <description>Pedro Falcão Engenheiro de Dados @ Descomplica 🇧🇷
+Sobre mim: Sou formado em Engenharia Mecânica, pela Universidade de São Paulo, mas, desde antes disso, trabalho com dados. Comecei a aprender conceitos de Python e aprendizado de máquina desde meu primeiro ano da universidade, em 2017, e desde então meu interesse por programação sempre cresceu. Minha maior paixão é compartilhar conhecimento, então, por muitos anos, trabalhei na construção de projetos que poderiam me ajudar com esse objetivo, incluindo dar aulas e escrever um blog de comunicação científica.</description>
+    </item>
+    
+    
+    
+  </channel>
+</rss>
