@@ -8,7 +8,7 @@ params:
   math: true
 
   homeInfoParams:
-      Title: "Olá! :wave:"
+      Title: "Olá!"
       Content: "Textos sobre Programação, Ciência e Matemática!"
 
   socialIcons:
@@ -30,7 +30,7 @@ outputs:
 # Language configuration 
 
 DefaultContentLanguage: pt 
-defaultContentLanguageInSubdir: true
+defaultContentLanguageInSubdir: false
 
 
 languages:
@@ -73,7 +73,7 @@ languages:
           weight: 30
     
     homeInfoParams:
-      Title: "Hello! :wave:"
+      Title: "Hello!"
       Content: "Writing about STEM!"
 
 

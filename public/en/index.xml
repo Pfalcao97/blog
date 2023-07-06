@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Pedro Falcao&#39;s Blog</title>
-    <link>http://example.org/en/</link>
+    <link>pfalcao97.githubpages.io/blog/en/</link>
     <description>Recent content on Pedro Falcao&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="http://example.org/en/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator><atom:link href="pfalcao97.githubpages.io/blog/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>http://example.org/en/aboutme/</link>
+      <link>pfalcao97.githubpages.io/blog/en/aboutme/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/en/aboutme/</guid>
+      <guid>pfalcao97.githubpages.io/blog/en/aboutme/</guid>
       <description>Pedro Falcão Data Engineer @ Descomplica 🇧🇷
 About me: I&amp;rsquo;ve graduated in Mechanical Engineering, from the University of São Paulo, but, since before that I&amp;rsquo;ve been working in data. I&amp;rsquo;ve began learning Python and machine learning concepts from my first year in university, in 2017, and since then, my interest in programming always grew. My ultimate passion is sharing knowledge, so for many years I&amp;rsquo;ve worked on building projects that could help me on that goal, including teaching and writing a science communication blog.</description>
     </item>

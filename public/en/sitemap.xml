@@ -2,53 +2,53 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://example.org/en/aboutme/</loc>
+    <loc>pfalcao97.githubpages.io/blog/en/aboutme/</loc>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="http://example.org/aboutme/"
+                href="pfalcao97.githubpages.io/blog/aboutme/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/aboutme/"
+                href="pfalcao97.githubpages.io/blog/en/aboutme/"
                 />
   </url><url>
-    <loc>http://example.org/en/categories/</loc>
+    <loc>pfalcao97.githubpages.io/blog/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="http://example.org/categories/"
+                href="pfalcao97.githubpages.io/blog/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/categories/"
+                href="pfalcao97.githubpages.io/blog/en/categories/"
                 />
   </url><url>
-    <loc>http://example.org/en/</loc>
+    <loc>pfalcao97.githubpages.io/blog/en/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="http://example.org/"
+                href="pfalcao97.githubpages.io/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/"
+                href="pfalcao97.githubpages.io/blog/en/"
                 />
   </url><url>
-    <loc>http://example.org/en/tags/</loc>
+    <loc>pfalcao97.githubpages.io/blog/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="http://example.org/tags/"
+                href="pfalcao97.githubpages.io/blog/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/tags/"
+                href="pfalcao97.githubpages.io/blog/en/tags/"
                 />
   </url>
 </urlset>
