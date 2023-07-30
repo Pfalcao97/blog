@@ -8,7 +8,7 @@ categories: ["Programação"]
 aliases: ["RegEx-deepdive"]
 
 cover:
-    image: "<https://github.com/Pfalcao97/blog/blob/main/content/posts/regex/cover_image.png?raw=true>"
+    image: "</cover_regex.png>"
     alt: "Expressões Regulares"
 ---
 
@@ -26,7 +26,10 @@ Para continuar a analogia da mágica, vamos puxar a cortina no meio do espetácu
 
 O **estado** "natural", ou inicial, da catraca é travada, você pode tentar empurrar, mas ela continua travada. A partir do momento que você passa o seu cartão com créditos suficiente, a catraca é destravada. Ela fica nesse **estado** até que você a empurre, fazendo com que ela retorne ao **estado** natural.
 
-{{< figure align="center" src="https://github.com/Pfalcao97/blog/blob/main/content/posts/RegEx/finitestatemachine.png?raw=true" >}}
+![](/finitestatemachine.png)
+
+{{< figure align="center" src="/finitestatemachine.png" title="abc"title="title" alt="alt text string" width="auto" >}}
+
 
 Tá, mas **como nós transportamos essa ideia para identificar um texto?**
 
