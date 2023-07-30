@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SQL on Blog de Pedro Falcão</title>
+    <link>https://pfalcao97.githubpages.io/blog/tags/sql/</link>
+    <description>Recent content in SQL on Blog de Pedro Falcão</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 08 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pfalcao97.githubpages.io/blog/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Expressões Regulares</title>
+      <link>https://pfalcao97.githubpages.io/blog/posts/regex/regex/</link>
+      <pubDate>Sat, 08 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pfalcao97.githubpages.io/blog/posts/regex/regex/</guid>
+      <description>Como e quando usar RegEX?</description>
+    </item>
+    
+  </channel>
+</rss>

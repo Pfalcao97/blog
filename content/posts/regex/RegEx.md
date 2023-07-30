@@ -6,7 +6,6 @@ description: "Como e quando usar RegEX?"
 tags: ["RegEx", "Python", "SQL"]
 categories: ["Programação"]
 aliases: ["regex-deepdive"]
-weight: 2
 ---
 
 ## Introdução
@@ -23,8 +22,7 @@ Para continuar a análogia da mágica, vamos puxar a cortina no meio do espetác
 
 O **estado** "natural", ou inicial, da catraca é travada, você pode tentar empurrar, mas ela continua travada. A partir do momento que você passa o seu cartão com créditos suficiente, a catraca é destravada. Ela fica nesse **estado** até que você empurre ela, fazendo com que ela retorne ao **estado** natural.
 
-{{< figure align="center" src="static/images/finitestatemachine.png" >}}
-
+{{< figure align="center" src="https://github.com/Pfalcao97/blog/blob/main/static/images/finitestatemachine.png?raw=true" >}}
 
 Tá, mas, **como nós transportamos essa ideia para identificar um texto?**
 
