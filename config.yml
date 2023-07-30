@@ -51,3 +51,8 @@ languages:
           name: Blog Posts
           url: /archives/
           weight: 30
+
+
+taxonomies:
+  category: categories
+  tag: tags
