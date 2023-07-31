@@ -2,7 +2,7 @@
 author: "Pedro Falcão"
 title: "Expressões Regulares"
 date: "2023-07-08"
-description: "Como e quando usar RegE?"
+description: "Como e quando usar RegEx?"
 tags: ["RegEx", "Python", "SQL"]
 categories: ["Programação"]
 aliases: ["RegEx-deepdive"]
@@ -304,7 +304,7 @@ Existe mais de uma forma para chegar ao seu objetivo com RegEx e, a bem da verda
 
 Escrever um bom RegEx é sinônimo de muitos testes e pensar fora da caixa, porque é preciso ver se ele funciona em todas as situações em que você precisa que ele funcione e, tão importante quanto, não funcione quando você precise que ele não funcione. Há, ainda, que se considerar a performace. Por isso, no geral, **Expressões regulares mais completas e mais longas, são melhores**. Se você tomar atalhos, sua performace, sua segurança ou os dois, podem sofrer.
 
-Foi exatamente isso que aconteceu com a Cloudflare, em 2019. Vale a pena a leitura da descrição completa do problema no blog deles (**\[3\]**), especialmente se você se interessa por segurança, mas o resumo é:
+Foi exatamente isso que aconteceu com a Cloudflare, em 2019. Vale a pena a leitura da descrição completa do problema no blog deles (**\[3\]**), especialmente se você se interessa por segurança, mas o resumo da opera é:
 
 1. Um engenheiro escreveu um código RegEx para o WAF (_Web Application Firewall_) do serviço. WAF é um firewall específico para chamadas HTTP, que visa proteger os serviços de ataques maliciosos como SQL Injection ou outras formas de interagir com o servidor usando comandos "escondidos" na query. O código era esse:
 
@@ -312,7 +312,7 @@ Foi exatamente isso que aconteceu com a Cloudflare, em 2019. Vale a pena a leitu
 
 2. Pela natureza desse tipo de ação, que deve ser rápida para impedir que **O Mais Novo Cyber Ataque**:tm: cause estragos, alguém escreve um código, há uma validação entre o time de engenharia, que aceita o _Pull Request_ e o _commit_ é feito, sendo implementado em todos os servidores ao redor do globo em segundos, sem, naquele momento, todas as precauções necessárias.
 
-3. Não haviam travas ou testes de consumo de CPU para barrar o RegEx, apenas travas de detecção, isso fez que o código mal otimizado, particularmente ```.*.*=.*```, exigisse muito do CPU do servidor, para toda nova requisição. Em poucos minutos essa regra fritou os servidores globais da CloudFlare, deixando vários serviços fora do ar.
+3. Não haviam travas ou testes de consumo de CPU para barrar o RegEx, apenas testes de detecção, isso fez que o código mal otimizado, particularmente ```.*.*=.*```, exigisse muito do CPU do servidor, para toda nova requisição. Em poucos minutos essa regra fritou os servidores globais da CloudFlare, deixando vários serviços fora do ar.
 
 O que aconteceu foi, basicamente, uma regra perigosa (_Procure qualquer coisa de qualquer tamanho, seguida de qualquer coisa de qualquer tamanho, seguida de um igual, seguida de qualquer coisa de qualquer tamanho_) e a falta de testes suficientes gerando um problema de escala global. 
 
@@ -320,7 +320,7 @@ O perigo nesse tipo de regra é conhecido, damos a ele o nome _Catastrophic Back
 
 {{< figure align="center" src="https://blog.cloudflare.com/content/images/2019/07/555-steps.gif" >}}
 
-Por isso a ênfase que estou tendo, particularmente em códigos de validação, é preciso testes e travas que protejam o ambiente contra essas situações catastróficas.
+Por isso a ênfase que estou tendo, particularmente em códigos de validação, é preciso testes e travas que protejam o ambiente contra essas situações catastróficas, além da tal parcimônia na hora de escrever os códigos, sempre pensando em situações limite.
 
 ## Conclusão
 
