@@ -110,7 +110,7 @@ Digamos que no ano de entrada de Tom na faculdade existam 200 alunos de administ
 
 É justamente esse princípio básico que norteia toda a **estatística bayesiana**.
 
-Thomas Bayes foi um pastor prebisteriano inglês que viveu no século XVIII. Entre rezas, o professo desenvolveu uma teoria para a probabilidade condicional, ou seja, como saber a probabilidade de que algo aconteça, sabendo que uma outra coisa já aconteceu. Formulando matematicamente o **Teorema de Bayes**, ficaria assim:
+Thomas Bayes foi um pastor presbiteriano inglês que viveu no século XVIII. Entre rezas, o professo desenvolveu uma teoria para a probabilidade condicional, ou seja, como saber a probabilidade de que algo aconteça, sabendo que uma outra coisa já aconteceu. Formulando matematicamente o **Teorema de Bayes**, ficaria assim:
 
 $$ P(A|B) = \frac{P(B|A) P(A)}{P(B)}$$
 
@@ -167,7 +167,7 @@ Lendo o manual de uso, você vê que os testes clínicos foram feitos em 2000 pe
 | **Positivo** |     0,96 (Sensibilidade)    |  0,1  (1 - Especificidade) |
 | **Negativo** |     0,90 (Especificidade)    |   0,04 (1 - Sensibilidade)  |
 
-Note que a a probabilidade de ser verdadeiro ou falso deve ser 100%, por isso que a taxa de falsos negativos deve ser 100% menos a sensibilidade. Isso pode ficar mais claro usando números: Se o teste tem uma taxa de verdadeiros positivos de 96%, significa que das 50 pessoas que estão doentes, o teste irá identificar corretamente 48 e deixará de identificar 2, fazendo com que essas sejam as falsas negativas, conta similar ocorre para a especificidade.
+Note que a probabilidade de ser verdadeiro ou falso deve ser 100%, por isso que a taxa de falsos negativos deve ser 100% menos a sensibilidade. Isso pode ficar mais claro usando números: Se o teste tem uma taxa de verdadeiros positivos de 96%, significa que das 50 pessoas que estão doentes, o teste irá identificar corretamente 48 e deixará de identificar 2, fazendo com que essas sejam as falsas negativas, conta similar ocorre para a especificidade.
 
 
 |          | **Verdadeiro** | **Falso** |
@@ -175,7 +175,7 @@ Note que a a probabilidade de ser verdadeiro ou falso deve ser 100%, por isso qu
 | **Positivo** |     48  pessoas  |  195 pessoas |
 | **Negativo** |     1.755  pessoas  |   2 pessoas |
 
-Depois de fazer o _mise en place_, você faz o teste e verifica que ele dá positivo. Em qual grupo você está? No das 48 pessoas que realmente têm a doença, ou na das 195 que não têm? Bom, isso quem irá dizer é a profissional da saúde, mas você aquietar um pouco a ansiedade, atualizando aquela probabilidade de 0,1% usando a fórmula de Bayes: Qual a probabilidade de que você esteja doente, ao receber um teste positivo, P(doente|positivo)?
+Depois de fazer o _mise en place_, você faz o teste e verifica que ele dá positivo. Em qual grupo você está? No das 48 pessoas que realmente têm a doença, ou na das 195 que não têm? Bom, isso quem irá dizer é a profissional da saúde, mas você pode aquietar um pouco a ansiedade, atualizando aquela probabilidade de 0,1% usando a fórmula de Bayes: Qual a probabilidade de que você esteja doente, ao receber um teste positivo, P(doente|positivo)?
 
 1. **P(doente):** essa é a probabilidade que chamamos _à priori_, ou seja, antes do teste. Nesse caso era de 0,1%.
 2. **P(positivo|doente):** Aqui tratamos da probabilidade de, estando doente, seu teste ser positivo - Em outras palavras, a sensibilidade do teste: 96%.
