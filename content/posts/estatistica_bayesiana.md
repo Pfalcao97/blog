@@ -156,7 +156,7 @@ Normalmente, nós só pensamos em um único número, a acurácia do teste, mas, 
 | **Positivo** |     O teste identificou a doença corretamente    |   O teste identificou a doença erroneamente  |
 | **Negativo** |     O teste não identificou a doença quando não deveria    |  O teste não identificou a doença quando deveria   |
 
-Em especial, focamos em testes sensíveis: **É melhor um alarme falso, resolvido facilmente com um segundo teste, do que não identificar casos em que a doença está presente, agravando o quadro**. Isso gera um número de **Falsos Positivos** comumente maior do que o número de **Falsos Negativos** e, ambos, se tudo estiver certo, bastante menores do que os resultados verdadeiros.
+Em especial, focamos em testes sensíveis: **é melhor um alarme falso, resolvido facilmente com um segundo teste, do que não identificar casos em que a doença está presente, agravando o quadro**. Isso gera um número de **Falsos Positivos** comumente maior do que o número de **Falsos Negativos** e, ambos, se tudo estiver certo, bastante menores do que os resultados verdadeiros.
 
 Pense em uma doença que afete 1 a cada 1000 pessoas no seu grupo - Doenças raramente podem ser tratadas como homogêneas na população. Poderíamos, de forma simplificada, assumir que você tem 1/1000 chances de pegar a doença, portanto a probabilidade de você estar com a doença é de 0,1%. Mas a médica que está te atendendo é uma pessoa cautelosa, e te pede para fazer um teste mesmo assim.
 

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>O prognóstico por representatividade | Blog de Pedro Falcão</title>
+<meta name="keywords" content="Estatística, Matemática, Economia">
+<meta name="description" content="As armadilhas anti-intuitivas da matemática">
+<meta name="author" content="Pedro Falcão">
+<link rel="canonical" href="https://pfalcao97.githubpages.io/blog/posts/estatistica_bayesiana/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.e6d0f51515118adbcc1f077ef36c53f3b2d935f3a7f7c3408cb8b6cb3650059a.css" integrity="sha256-5tD1FRURitvMHwd&#43;82xT87LZNfOn98NAjLi2yzZQBZo=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/blog/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://pfalcao97.githubpages.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://pfalcao97.githubpages.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://pfalcao97.githubpages.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://pfalcao97.githubpages.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://pfalcao97.githubpages.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+<meta property="og:title" content="O prognóstico por representatividade" />
+<meta property="og:description" content="As armadilhas anti-intuitivas da matemática" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://pfalcao97.githubpages.io/blog/posts/estatistica_bayesiana/" />
+<meta property="og:image" content="https://github.com/Pfalcao97/blog/blob/main/static/cover_bayes.png?raw=true" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-08-09T00:00:00+00:00" /><meta property="og:site_name" content="Blog de Pedro Falcão" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://github.com/Pfalcao97/blog/blob/main/static/cover_bayes.png?raw=true" />
+<meta name="twitter:title" content="O prognóstico por representatividade"/>
+<meta name="twitter:description" content="As armadilhas anti-intuitivas da matemática"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://pfalcao97.githubpages.io/blog/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "O prognóstico por representatividade",
+      "item": "https://pfalcao97.githubpages.io/blog/posts/estatistica_bayesiana/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "O prognóstico por representatividade",
+  "name": "O prognóstico por representatividade",
+  "description": "As armadilhas anti-intuitivas da matemática",
+  "keywords": [
+    "Estatística", "Matemática", "Economia"
+  ],
+  "articleBody": "Introdução A matemática é lógica, por definição. Mas isso não significa que ela seja óbvia e, muito menos, intuitiva. Inclusive, muitas vezes, ela é tão pouco óbvia e intuitiva, que nos parece não-lógica. E isso, por si só, é nada intuitivo!\nTanto é, que existe um campo de estudo inteiro dedicado a tratar o ser humano como ente plenamente lógico e racional - a economia - que foi virado de cabeça pra baixo quando dois psicólogos chegaram e falaram “Ei, galera, não é bem assim…”. A revolução foi tão profunda que mereceu até um prêmio Nobel.\nHoje eu quero falar um pouco de algumas falácias lógicas que nos levam a conclusões erradas, a partir de premissas enviesadas, mesmo sem perceber, e uma ferramenta que pode nos ajudar a interpretar o mundo nessas condições, a estatística bayesiana.\nLógica Definição do minidicionário da língua portuguesa, Silveira Bueno:\nLógica: (Substantivo feminino)\nCiência que estuda as leis do raciocínio; coerência; raciocínio.\nExistem muitas palavras que têm uma definição clara, porém o uso no dia-a-dia acaba raptando e transformando seu significado. Lógica é uma dessas. A expressão “É lógico”, ao invés de significar “tem coerência com as premissas básicas adotadas no seu raciocínio”, é normalmente utilizada para definir algo que é óbvio, elementar.\nMas essas duas coisas (o óbvio e o coerente) não têm, necessariamente, algo em comum. Não me leve a mal: deveriam ter, mas, quantas vezes você já teve certeza de algo? Pode ser algo que compõe fundamentalmente sua maneira de ver o mundo, como uma ideologia política, ou algo trivial, como a certeza de que seu amigo está te evitando.\nE quantas dessas vezes a certeza se desintegrou depois de uma explicação? Seu amigo não estava te evitando, ele só estava ocupado no trabalho e, portanto, não conseguiu responder os 20 tik toks que você mandou para ele no período de 2 horas, no meio da tarde.\nA própria prática da psicoterapia está muito calcada nisso: às vezes, só de colocar seus pensamentos (que parecem óbvios e corretos) em palavras, você consegue identificar premissas erradas e saltos lógicos. Mas nem sempre esse reconhecimento é fácil.\nImagine a seguinte descrição de uma mulher, Linda:\nLinda tem 31 anos de idade, é solteira, franca e muito inteligente. É formada em filosofia. Quando era estudante, preocupava-se profundamente com questões de discriminação e justiça social, e também participava de manifestações antinucleares.\nApós ler essa descrição, você deve inferir qual sobre a sua situação atual: Será que ela trabalha como professora? Será que é banqueira, ou trabalha numa livraria? Ela participa do movimento feminista? Ela faz ioga?\nDiante de várias opções, muitas pessoas atribuem uma probabilidade maior a Linda ser uma banqueira feminista do que apenas uma banqueira. Ou seja, o estereótipo criado na sua descrição, uma pessoa mais alinhada com ideais progressistas, é tão forte que faz com que muitos ignorem a regra lógica de que para ser feminista e banqueira, ela deve, necessariamente, ser banqueira, por mais que te pareça muito mais provável que ela seja feminista, do que banqueira.\nAssim surge a falácia da conjunção: o ato de considerar eventos conjugados como mais prováveis do que qualquer um dos eventos individuais que o compõe, em uma comparação direta. Ninguém diz que é mais provável tirar cara e depois coroa, ao lançar uma moeda duas vezes, do que tirar só cara, ao lançar uma única vez, mas quando damos uma contextualização maior ao problema, a estatística se confunde com os nossos vieses.\nEssa foi uma das descobertas da dupla de psicólogos, Daniel Kahneman e Amos Tversky.\nAo longo de uma frutífera carreira científica, eles desenvolveram inúmeros experimentos e, com eles, artigos, que iriam quebrar muitos dos paradigmas das ciências comportamentais. Seus trabalhos são extremamente influentes até hoje e foram premiados com o Nobel de Economia em 2002 - Por conta do falecimento de Amos em 1996, Daniel recebeu o prêmio sozinho.\nRápido e Devagar ✏️ Mais recentemente, Daniel escreveu o livro Rápido e Devagar, que virou um best-seller, contando sobre o seu entendimento do funcionamento da mente à partir de todo arcabouço que a psicologia cognitiva desenvolveu desde então - sempre muito bem ilustrado com exemplos tirados diretamente dos seus experimentos, como é o caso da Linda!\nTambém é o caso do experimento que me motivou a escrever o texto: A escolha profissional de Tom W..\nEm alguns lugares no exterior, como nos Estado Unidos, ao final do Ensino Médio, é comum que professores escrevam cartas de recomendação para universidades, descrevendo as qualidades de um aluno particular - Esperançosamente motivando sua entrada em tal universidade. Eis um trecho de uma dessas cartas que foi escrita para um aluno em particular, Tom W.:\nTom é dotado de grande inteligência, embora careça de criatividade genuína. Tem necessidade de ordem e clareza e de sistemas claros e ordenados em que cada detalhe encontre seu lugar apropriado. Seu texto está mais para maçante e mecânico, animado ocasionalmente por alguns trocadilhos batidos e lampejos de imaginação do tipo ficção científica. Exibe forte compulsão por competência. Parece apresentar pouca compreensão e pouca simpatia pelas outras pessoas,e não aprecia a interação com os outros. Autocentrado, exibe no entanto um profundo senso moral.\nNão há nada de especial em Tom, ele foi um aluno escolhido aleatoriamente em uma universidade, para exemplificar o experimento. A universidade que ele estuda oferece os seguintes cursos:\nAdministração Ciência da computação Engenharia Humanidades e educação Direito Medicina Biblioteconomia Ciências físicas e biológicas Ciência social e assistência social Se você tivesse que ordenar os cursos acima, do mais provável para o menos provável de ser o curso de Tom, como ficaria sua lista?\nSupondo que você tenha realmente listado (e eu espero que sim, pois é uma boa forma de entender o que será explicado a seguir), pode ter acontecido duas coisas:\nVocê ordenou com base no estereótipo do curso e no texto do professor. Você não ordenou, porque está faltando uma informação. Rápido e devagar é como Daniel descreve os dois sistemas que agem no nosso cérebro, o sistema 1 é rápido e automático, o sistema 2 é lento e deliberado. Se você respondeu da primeira forma, você usou o sistema 1 para substituir a pergunta, ao invés de responder a pergunta (difícil) da probabilidade por curso, o seu cérebro escolheu responder a pergunta (fácil) de “qual desses cursos tem o estereótipo que mais corresponde com a personalidade descrita?”. Enquanto que, para responder a pergunta corretamente, seria necessário saber as taxas de incidência de cada curso na universidade, que é o que você deve ter pensado, caso tenha respondido da segunda forma - usando seu sistema 2!\nE antes de você considerar a conclusão acima injusta, veja a seguinte questão, bastante similar:\nEu tenho um pote com 100 bolinhas, na seguinte distribuição: 10 bolinhas vermelhas, 40 bolinhas verdes e 50 bolinhas azuis. Ordene as cores da mais provável para a menos provável de ser a cor de uma bolinha tirada ao acaso.\nSe você tiver um conhecimento básico de probabilidade, deve ter feito a seguinte lista: Azul (50% de probabilidade), Verde (40%) e Vermelho (10%). Por que com Tom W. seria diferente? Você nem sabe se a descrição do professor é certeira!\nO prognóstico por representatividade é a forma como nós focamos nas representações individuais, em detrimento da distribuição de ocorrência do fenômeno. É claro que a descrição individual pode fornecer informações importantes, mas ainda assim, ao invés de substituir a probabilidade basal, o ideal é que ela a atualize.\nA estatística Bayesiana Vamos voltar ao exemplo das bolinhas. A distribuição das cores no pote é a mesma, mas, dentre as bolinhas vermelhas, 80% têm uma linha preta desenhada, dentre as verdes, 40% têm a mesma linha, e dentre as azuis, apenas 20%.\nSe eu adicionar que a bolinha tirada também possui o mesmo desenho, como isso muda a ordem de cores mais prováveis? Bom, vamos fazer uma contagem:\nExistem 8 bolinhas vermelhas com listras (80% de 10). Existem 16 bolinhas verdes com listras (40% de 40). Existem 10 bolinhas azuis com listras (20% de 50). Então, agora nosso espaço amostral não é mais 100, mas 34 (8+16+10), e a ordem deve ser: Verde (47% de probabilidade), Azul (29,5%) e Vermelho (23,5%). A presença da listra não descartou completamente a distribuição de cores anterior - apenas atualizou as probabilidades. O mesmo deveria ter acontecido com Tom.\nDigamos que no ano de entrada de Tom na faculdade existam 200 alunos de administração e 20 de Engenharia, por mais que a descrição de Tom seja compatível com 100% dos estudantes de engenharia (nota do autor: posso confirmar) e apenas 10% dos estudantes de administração - a probabilidade ainda é 50/50, porque representam 20 estudantes de engenharia e 20 de administração!\nÉ justamente esse princípio básico que norteia toda a estatística bayesiana.\nThomas Bayes foi um pastor presbiteriano inglês que viveu no século XVIII. Entre rezas, o professo desenvolveu uma teoria para a probabilidade condicional, ou seja, como saber a probabilidade de que algo aconteça, sabendo que uma outra coisa já aconteceu. Formulando matematicamente o Teorema de Bayes, ficaria assim:\n$$ P(A|B) = \\frac{P(B|A) P(A)}{P(B)}$$\nOu, em português: A probabilidade de que aconteça o evento A, sabendo que já aconteceu o evento B, P(A|B), é igual à probabilidade de que aconteça A, P(A), vezes a probabilidade de que aconteça B, dado que A já aconteceu, P(B|A), dividido pela probabilidade de que aconteça B, P(B). Podemos pensar na fórmula como uma proporção: De todas as vezes que B acontece, quantas acontecem depois de A? Pegue esse número e multiplique pela probabilidade de A, chegando assim ao valor atualizado!\nPode parecer confuso, explicando assim, mas a gente acabou de fazer esse exato exemplo, com as bolinhas coloridas.\nVamos reorganizar o enunciado, para ficar mais claro:\nQual a probabilidade de que uma bolinha com listras, escolhida aleatoriamente do pote, seja azul?\nAplicamos Bayes!\nP(azul|listra): esse é o valor que queremos encontrar, a probabilidade de que uma bolinha listrada seja azul. P(azul): anteriormente vimos que, das 100 bolinhas no pote, 50 são azuis. Portanto essa probabilidade é 50%. P(listra|azul): aqui, queremos saber qual a probabilidade de que uma bolinha azul seja listrada. Isso também foi dado pelo problema, como apenas 20% das bolinhas azuis são listradas, essa probabilidade é, também, 20%. P(listra): As bolinhas listradas são 8 vermelhas, 16 verdes e 10 azuis - 34 no total. Portanto, dividimos pelo número total de bolinhas, 100, e encontramos que essa probabilidade é de 34%. Basta colocar tudo na fórmula acima e voilà!\n$$ P(azul|listra) = \\frac{P(listra|azul) P(azul)}{P(listra)} = \\frac{0,2 \\times 0,5}{0,34} = 0,294 $$\nParabéns, você acabou de reencontrar o mesmo número, só que de forma muito mais difícil. Brincadeiras a parte, não é a toa que o teorema de Bayes é chamado de “bom senso aplicado à matemática”, é uma boa forma de garantir que seu pensamento é coerente - particularmente nos casos mais complicados de fazer uma verificação simples!\nXKCD Nº 1132: Frequentistas vs. Bayesianos. Verdadeiramente, bom senso aplicado.\nUm bom caso de estudo para esse ramo da estatística está relacionado aos testes médicos, como os testes de COVID, que tanto nos acostumamos a fazer nos últimos anos. Mas não é só nisso que o bom pastor pode te ajudar, ele também pode aumentar suas chances de conseguir um carro novo*!\n* Essa situação é bastante específica, qualquer não obtenção de um veículo novo não é responsabilidade do autor ou do pastor.\nComo interpretar um teste positivo? Temos o costume de ver testes médicos como sentenças: Se o resultado deu positivo, nós temos a doença ou condição que o exame estava testando. Mas isso não é tão preto no branco - tanto é que médicos normalmente pedem para você repetir exames com resultados inesperados, em especial para condições que tenham consequências mais graves.\nNormalmente, nós só pensamos em um único número, a acurácia do teste, mas, no fundo, durante os testes clínicos são computados quatro números relevantes:\nVerdadeiro Falso Positivo O teste identificou a doença corretamente O teste identificou a doença erroneamente Negativo O teste não identificou a doença quando não deveria O teste não identificou a doença quando deveria Em especial, focamos em testes sensíveis: é melhor um alarme falso, resolvido facilmente com um segundo teste, do que não identificar casos em que a doença está presente, agravando o quadro. Isso gera um número de Falsos Positivos comumente maior do que o número de Falsos Negativos e, ambos, se tudo estiver certo, bastante menores do que os resultados verdadeiros.\nPense em uma doença que afete 1 a cada 1000 pessoas no seu grupo - Doenças raramente podem ser tratadas como homogêneas na população. Poderíamos, de forma simplificada, assumir que você tem 1/1000 chances de pegar a doença, portanto a probabilidade de você estar com a doença é de 0,1%. Mas a médica que está te atendendo é uma pessoa cautelosa, e te pede para fazer um teste mesmo assim.\nLendo o manual de uso, você vê que os testes clínicos foram feitos em 2000 pessoas, das quais 50 estavam doentes. Nesses testes, a sensibilidade foi de 96% e a especificidade foi de 90%. Após uma rápida pesquisa, você vê que sensibilidade é uma outra palavra para o Verdadeiro Positivo e especificidade, outra palavra para Verdadeiro Negativo, então, você reconstrói a tabela com os números do teste:\nVerdadeiro Falso Positivo 0,96 (Sensibilidade) 0,1 (1 - Especificidade) Negativo 0,90 (Especificidade) 0,04 (1 - Sensibilidade) Note que a probabilidade de ser verdadeiro ou falso deve ser 100%, por isso que a taxa de falsos negativos deve ser 100% menos a sensibilidade. Isso pode ficar mais claro usando números: Se o teste tem uma taxa de verdadeiros positivos de 96%, significa que das 50 pessoas que estão doentes, o teste irá identificar corretamente 48 e deixará de identificar 2, fazendo com que essas sejam as falsas negativas, conta similar ocorre para a especificidade.\nVerdadeiro Falso Positivo 48 pessoas 195 pessoas Negativo 1.755 pessoas 2 pessoas Depois de fazer o mise en place, você faz o teste e verifica que ele dá positivo. Em qual grupo você está? No das 48 pessoas que realmente têm a doença, ou na das 195 que não têm? Bom, isso quem irá dizer é a profissional da saúde, mas você aquietar um pouco a ansiedade, atualizando aquela probabilidade de 0,1% usando a fórmula de Bayes: Qual a probabilidade de que você esteja doente, ao receber um teste positivo, P(doente|positivo)?\nP(doente): essa é a probabilidade que chamamos à priori, ou seja, antes do teste. Nesse caso era de 0,1%. P(positivo|doente): Aqui tratamos da probabilidade de, estando doente, seu teste ser positivo - Em outras palavras, a sensibilidade do teste: 96%. P(positivo): Por fim, a probabilidade do teste dar positivo. Aqui é útil a construção da tabelinha: Dos 2.000 voluntários, 48 foram verdadeiros positivos e 195, falsos positivos, portanto a probabilidade é (48 + 195)/2000, 12,15%. Assim, aplicando os números à fórmula:\n$$ P(doente|positivo) = \\frac{P(positivo|doente) P(doente)}{P(positivo)} = \\frac{0,96 \\times 0,001}{0,1215} = 0,0079 $$\nOu seja, embora o teste aumente em quase 8 vezes sua chance de ter a doença, a grande proporção de falsos positivos para verdadeiros positivos significa que, ao positivar o teste, a probabilidade de ser um resultado falso é alta. Significando que não é uma sentença, mas uma atualização de probabilidade. Claro, se você continuar fazendo testes e o resultado continuar sendo positivo, sua chance de ter a doença aumenta bastante: No segundo positivo, 6,24% e no terceiro, 49,3%. Isso motiva a realização de mais testes!\nO problema de Monty Hall Agora, vamos falar do tal carro novo. Mas, antes, eu preciso te preparar: acontece que a situação a seguir é polêmica - causou acaloradas cartas e reações de professores de estatística, quando foi enunciada pela primeira vez, e causou uma acalorada discussão entre eu e minha namorada, quando eu contei pra ela sobre o problema. Prossiga com cuidado ⚠️.\nTudo começa com um quadro de perguntas e respostas em uma revista americana chamado Ask Marilyn. Marilyn vos Savant, reverenciada pelo seu QI altíssimo, respondia dúvidas gerais dos leitores, pense em algo como um google-antes-do-google. Em certo momento chega a seguinte pergunta, inspirada em um famoso programa de TV, Let’s make a Deal, apresentado por um carismático host, Monty Hall:\nSuponha que os participantes de um programa de auditório recebam a opção de escolher uma dentre três portas: atrás de uma delas há um carro; atrás das outras, há cabras. Depois que um dos participantes escolhe uma porta, o apresentador, que sabe o que há atrás de cada porta, abre uma das portas não escolhidas, revelando uma cabra. Ele diz ao participante: “Você gostaria de mudar sua escolha para a outra porta fechada?”. Para o participante, é vantajoso trocar sua escolha?\nTudo que intuitivamente sabemos sobre probabilidades, nos diz o seguinte:\nHá chances iguais do prêmio estar nas três portas, portanto, a probabilidade de prêmio é de 33,3% para cada porta. Uma vez que uma das portas é eliminada, sobram duas portas com iguais probabilidades, portanto, cada uma delas tem uma probabilidade de 50% de conter o prêmio. Como há 50% de chance de acertar a porta, não é vantajoso trocar, nem se manter - ambas opções apresentam o mesmo benefício. Mas - lembrando que a matemática nem sempre é intuitiva - Marylin causou muita confusão ao afirmar que é mais vantajoso trocar a escolha. E não é por pouco, não: você tem 2 vezes mais chance de ganhar o carro, se trocar a porta escolhida. Antes que você, como muitos outros, comece a xingá-la, dizendo que ela não sabe de nada, saiba que sua afirmação está, na verdade, correta. E a estatística Bayesiana pode te ajudar a entender o porquê.\nTudo começa com uma premissa básica: O apresentador, Monty Hall, não está abrindo portas ao acaso. Se fosse o caso, ele correria o risco de abrir a porta do carro, sem querer, o que tira toda a graça do jogo. Então nós precisamos nos atentar ao fato de que ele sabe onde está o carro. Embora isso não mude a percepção intuitiva do problema, pois ainda existem duas portas e um único prêmio, quando colocamos na ponta do lápis, esse detalhe fica bastante relevante.\nSuponha que o participante escolheu a porta 2, ao passo que o apresentador abriu a porta 3, mostrando uma cabra pacientemente comendo um pouco de palha. Como a probabilidade do carro estar atrás da porta de número 1 se altera, diante da nova evidência da porta 3- P(p1|p3)?\nP(p1): Começamos com chances iguais para as três portas, então mantemos esse valor - a probabilidade de que o carro esteja atrás da porta 1 é de 33,3%.\nP(p3|p1): Aqui está o pulo do gato, qual a probabilidade de que a porta 3 seja aberta, caso o prêmio esteja atrás da porta 1?\nO apresentador não pode abrir a porta 2, que você escolheu, porque é contra as regras. O apresentador não pode abrir a porta 1, pois o prêmio está nela e ele não quer revelá-lo. Nesse caso, a única porta que pode ser aberta é a 3, ou seja, essa probabilidade é 100%!\nP(p3): Ignorando agora a localização do prêmio, qualquer uma das duas portas não escolhidas poderiam ser abertas, fazendo com que a probabilidade da porta 3 ser aberta seja 50%.\nCompilando isso tudo na nossa querida formuleta:\n$$ P(p1|p3) = \\frac{P(p3|p1) P(p1)}{P(p3)} = \\frac{0,333 \\times 1}{0,5} = 0,666 $$\nComo vemos, a probabilidade de você ter errado, e o prêmio estar atrás da porta de número 1, é de 66,6%, portanto é mais vantajoso aceitar a troca, ao ser perguntado pelo apresentador. Fazendo as contas para o caso contrário (P(p2|p3)), a probabilidade da porta 3 ser aberta é de 50%, pois o apresentador pode abrir qualquer uma das duas livremente, fazendo assim com que sua chance seja de 1 em 3 - 33,3%.\nNote que esse é um caso particular do teorema. Quando enunciei a fórmula pela primeira vez, a descrevi como uma proporção do evento B, nesse caso específico em que o evento A não influencia o evento B, o evento B também não influencia o evento A - fazendo que que P(B|A) e P(B) se cancelem e P(A|B) seja igual à P(A). Até nisso Bayes foi bem sucedido em formular o bom senso matemáticamente, afinal, não é qualquer coisa que influencia as probabilidades. Não é só porque o Nicolas Cage lançou um filme novo, que mais pessoas vão morrer afogadas (o que não siginifica que não haja uma correlação entre as duas coisas, mas isso é um papo para outro momento).\nConclusão Viver como um ser lógico e estóico não é muito simples, nossa própria mente prega truques ao tentar poupar energia usando o Sistema 1 para responder rapidamente os dilemas do dia-a-dia. Uma boa forma de ativar o Sistema 2 é tentando adicionar a lógica formal e a matemática no seu raciocínio, e o teorema de Bayes é particularmente bom nisso.\nHoje, inclusive, existe quase que um culto à filosofia bayesiana de vida, algumas pessoas realmente norteiam suas vidas usando esse conceito da estatística.\nNão é necessário, no entanto, se inscrever numa seita para tomar decisões melhores, ou interpretar resultados de forma mais correta, usando o teorema. Uma compreensão de que novas evidências atualizam probabilidades antigas, ao invés de substituí-las pode nos levar muito longe, ajudando a desmistificar os viéses cognitivos da nossa mente!\nFontes Bayes theorem, the geometry of changing beliefs, 3Blue1Brown, 2019-12-22 (Acesso em Agosto de 2023).\nRápido e devagar: duas formas de pensar, Daniel Kahneman, 2012.\nO andar do bêbado, Leonard Mlodinow, 2009.\n",
+  "wordCount" : "3586",
+  "inLanguage": "pt",
+  "image":"https://github.com/Pfalcao97/blog/blob/main/static/cover_bayes.png?raw=true","datePublished": "2023-08-09T00:00:00Z",
+  "dateModified": "2023-08-09T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Pedro Falcão"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pfalcao97.githubpages.io/blog/posts/estatistica_bayesiana/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Blog de Pedro Falcão",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pfalcao97.githubpages.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://pfalcao97.githubpages.io/blog" accesskey="h" title="Blog de Pedro Falcão (Alt + H)">Blog de Pedro Falcão</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://pfalcao97.githubpages.io/blog/categories/" title="Categorias">
+                    <span>Categorias</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://pfalcao97.githubpages.io/blog/aboutme/" title="Sobre mim">
+                    <span>Sobre mim</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://pfalcao97.githubpages.io/blog/archives/" title="Blog Posts">
+                    <span>Blog Posts</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://pfalcao97.githubpages.io/blog">Início</a>&nbsp;»&nbsp;<a href="https://pfalcao97.githubpages.io/blog/posts/">Posts</a></div>
+    <h1 class="post-title">
+      O prognóstico por representatividade
+    </h1>
+    <div class="post-description">
+      As armadilhas anti-intuitivas da matemática
+    </div>
+    <div class="post-meta"><span title='2023-08-09 00:00:00 +0000 UTC'>agosto 9, 2023</span>&nbsp;·&nbsp;17 minutos&nbsp;·&nbsp;Pedro Falcão
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://github.com/Pfalcao97/blog/blob/main/static/cover_bayes.png?raw=true" alt="A estatística bayesiana">
+        
+</figure>
+  <div class="post-content"><h2 id="introdução">Introdução<a hidden class="anchor" aria-hidden="true" href="#introdução">#</a></h2>
+<p>A matemática é lógica, por definição. Mas isso não significa que ela seja óbvia e, muito menos, intuitiva. Inclusive, muitas vezes, ela é tão pouco óbvia e intuitiva, que nos parece não-lógica. E isso, por si só, é nada intuitivo!</p>
+<p>Tanto é, que existe um campo de estudo inteiro dedicado a tratar o ser humano como ente plenamente lógico e racional - a economia - que foi virado de cabeça pra baixo quando dois psicólogos chegaram e falaram <em>&ldquo;Ei, galera, não é bem assim&hellip;&rdquo;</em>. A revolução foi tão profunda que mereceu até um prêmio Nobel.</p>
+<p>Hoje eu quero falar um pouco de algumas falácias lógicas que nos levam a conclusões erradas, a partir de premissas enviesadas, mesmo sem perceber, e uma ferramenta que pode nos ajudar a interpretar o mundo nessas condições, a estatística bayesiana.</p>
+<h2 id="lógica">Lógica<a hidden class="anchor" aria-hidden="true" href="#lógica">#</a></h2>
+<p>Definição do minidicionário da língua portuguesa, Silveira Bueno:</p>
+<blockquote>
+<p><strong>Lógica:</strong> <em>(Substantivo feminino)</em></p>
+<p>Ciência que estuda as leis do raciocínio; coerência; raciocínio.</p>
+</blockquote>
+<p>Existem muitas palavras que têm uma definição clara, porém o uso no dia-a-dia acaba raptando e transformando seu significado. Lógica é uma dessas. A expressão <em>&ldquo;É lógico&rdquo;</em>, ao invés de significar <em>&ldquo;tem coerência com as premissas básicas adotadas no seu raciocínio&rdquo;</em>, é normalmente utilizada para definir algo que é óbvio, elementar.</p>
+<p>Mas essas duas coisas (o óbvio e o coerente) não têm, necessariamente, algo em comum. Não me leve a mal: <strong>deveriam ter</strong>, mas, quantas vezes você já teve certeza de algo? Pode ser algo que compõe fundamentalmente sua maneira de ver o mundo, como uma ideologia política, ou algo trivial, como a certeza de que seu amigo está te evitando.</p>
+<p>E quantas dessas vezes a certeza se desintegrou depois de uma explicação? Seu amigo não estava te evitando, ele só estava ocupado no trabalho e, portanto, não conseguiu responder os 20 <em>tik toks</em> que você mandou para ele no período de 2 horas, no meio da tarde.</p>
+<p>A própria prática da psicoterapia está muito calcada nisso: às vezes, só de colocar seus pensamentos (que parecem óbvios e corretos) em palavras, você consegue identificar premissas erradas e saltos lógicos. Mas nem sempre esse reconhecimento é fácil.</p>
+<p>Imagine a seguinte descrição de uma mulher, Linda:</p>
+<blockquote>
+<p>Linda tem 31 anos de idade, é solteira, franca e muito inteligente. É formada em filosofia. Quando era estudante, preocupava-se profundamente com questões de discriminação e justiça social, e também participava de manifestações antinucleares.</p>
+</blockquote>
+<p>Após ler essa descrição, você deve inferir qual sobre a sua situação atual: Será que ela trabalha como professora? Será que é banqueira, ou trabalha numa livraria? Ela participa do movimento feminista? Ela faz ioga?</p>
+<p>Diante de várias opções, muitas pessoas atribuem uma probabilidade maior a Linda ser uma banqueira feminista do que apenas uma banqueira. Ou seja, o estereótipo criado na sua descrição, uma pessoa mais alinhada com ideais progressistas, é tão forte que faz com que muitos ignorem a regra lógica de que <strong>para ser feminista e banqueira, ela deve, necessariamente, ser banqueira</strong>, por mais que te pareça muito mais provável que ela seja feminista, do que banqueira.</p>
+<p>Assim surge a <strong>falácia da conjunção</strong>: o ato de considerar eventos conjugados como mais prováveis do que qualquer um dos eventos individuais que o compõe, em uma comparação direta. Ninguém diz que é mais provável tirar cara e depois coroa, ao lançar uma moeda duas vezes, do que tirar só cara, ao lançar uma única vez, mas quando damos uma contextualização maior ao problema, a estatística se confunde com os nossos vieses.</p>
+<p>Essa foi uma das descobertas da dupla de psicólogos, Daniel Kahneman e Amos Tversky.</p>
+<p>Ao longo de uma frutífera carreira científica, eles desenvolveram inúmeros experimentos e, com eles, artigos, que iriam quebrar muitos dos paradigmas das ciências comportamentais. Seus trabalhos são extremamente influentes até hoje e foram premiados com o Nobel de Economia em 2002 - Por conta do falecimento de Amos em 1996, Daniel recebeu o prêmio sozinho.</p>
+<h2 id="rápido-e-devagar-">Rápido e Devagar ✏️<a hidden class="anchor" aria-hidden="true" href="#rápido-e-devagar-">#</a></h2>
+<p>Mais recentemente, Daniel escreveu o livro Rápido e Devagar, que virou um <em>best-seller</em>, contando sobre o seu entendimento do funcionamento da mente à partir de todo arcabouço que a psicologia cognitiva desenvolveu desde então - sempre muito bem ilustrado com exemplos tirados diretamente dos seus experimentos, como é o caso da Linda!</p>
+<p>Também é o caso do experimento que me motivou a escrever o texto: <strong>A escolha profissional de Tom W.</strong>.</p>
+<p>Em alguns lugares no exterior, como nos Estado Unidos, ao final do Ensino Médio, é comum que professores escrevam cartas de recomendação para universidades, descrevendo as qualidades de um aluno particular - Esperançosamente motivando sua entrada em tal universidade. Eis um trecho de uma dessas cartas que foi escrita para um aluno em particular, Tom W.:</p>
+<blockquote>
+<p>Tom é dotado de grande inteligência, embora careça de criatividade genuína. Tem necessidade de ordem e clareza e de sistemas claros e ordenados em que cada detalhe encontre seu lugar apropriado. Seu texto está mais para maçante e mecânico, animado ocasionalmente por alguns trocadilhos batidos e lampejos de imaginação do tipo ficção científica. Exibe forte compulsão por competência. Parece apresentar pouca compreensão e pouca simpatia pelas outras pessoas,e não aprecia a interação com os outros. Autocentrado, exibe no entanto um profundo senso moral.</p>
+</blockquote>
+<p>Não há nada de especial em Tom, ele foi um aluno escolhido aleatoriamente em uma universidade, para exemplificar o experimento. A universidade que ele estuda oferece os seguintes cursos:</p>
+<ul>
+<li>Administração</li>
+<li>Ciência da computação</li>
+<li>Engenharia</li>
+<li>Humanidades e educação</li>
+<li>Direito</li>
+<li>Medicina</li>
+<li>Biblioteconomia</li>
+<li>Ciências físicas e biológicas</li>
+<li>Ciência social e assistência social</li>
+</ul>
+<p>Se você tivesse que ordenar os cursos acima, do mais provável para o menos provável de ser o curso de Tom, como ficaria sua lista?</p>
+<p>Supondo que você tenha realmente listado (e eu espero que sim, pois é uma boa forma de entender o que será explicado a seguir), pode ter acontecido duas coisas:</p>
+<ol>
+<li>Você ordenou com base no estereótipo do curso e no texto do professor.</li>
+<li>Você não ordenou, porque está faltando uma informação.</li>
+</ol>
+<p>Rápido e devagar é como Daniel descreve os dois sistemas que agem no nosso cérebro, o sistema 1 é rápido e automático, o sistema 2 é lento e deliberado. Se você respondeu da primeira forma, você usou o sistema 1 para <em>substituir</em> a pergunta, ao invés de responder a pergunta (difícil) da probabilidade por curso, o seu cérebro escolheu responder a pergunta (fácil) de <em>&ldquo;qual desses cursos tem o estereótipo que mais corresponde com a personalidade descrita?&rdquo;</em>. Enquanto que, para responder a pergunta corretamente, seria necessário saber as taxas de incidência de cada curso na universidade, que é o que você deve ter pensado, caso tenha respondido da segunda forma - usando seu sistema 2!</p>
+<p>E antes de você considerar a conclusão acima injusta, veja a seguinte questão, bastante similar:</p>
+<blockquote>
+<p>Eu tenho um pote com 100 bolinhas, na seguinte distribuição: 10 bolinhas vermelhas, 40 bolinhas verdes e 50 bolinhas azuis. Ordene as cores da mais provável para a menos provável de ser a cor de uma bolinha tirada ao acaso.</p>
+</blockquote>
+<p>Se você tiver um conhecimento básico de probabilidade, deve ter feito a seguinte lista: Azul (50% de probabilidade), Verde (40%) e Vermelho (10%). Por que com Tom W. seria diferente? Você nem sabe se a descrição do professor é certeira!</p>
+<p>O <strong>prognóstico por representatividade</strong> é a forma como nós focamos nas representações individuais, em detrimento da distribuição de ocorrência do fenômeno. É claro que a descrição individual pode fornecer informações importantes, mas ainda assim, ao invés de <strong>substituir</strong> a probabilidade basal, o ideal é que ela a <strong>atualize</strong>.</p>
+<h2 id="a-estatística-bayesiana">A estatística Bayesiana<a hidden class="anchor" aria-hidden="true" href="#a-estatística-bayesiana">#</a></h2>
+<p>Vamos voltar ao exemplo das bolinhas. A distribuição das cores no pote é a mesma, mas, dentre as bolinhas vermelhas, 80% têm uma linha preta desenhada, dentre as verdes, 40% têm a mesma linha, e dentre as azuis, apenas 20%.</p>
+<p>Se eu adicionar que a bolinha tirada também possui o mesmo desenho, como isso muda a ordem de cores mais prováveis? Bom, vamos fazer uma contagem:</p>
+<ol>
+<li>Existem 8 bolinhas vermelhas com listras (80% de 10).</li>
+<li>Existem 16 bolinhas verdes com listras (40% de 40).</li>
+<li>Existem 10 bolinhas azuis com listras (20% de 50).</li>
+</ol>
+<p>Então, agora nosso espaço amostral não é mais 100, mas 34 (8+16+10), e a ordem deve ser: Verde (47% de probabilidade), Azul (29,5%) e Vermelho (23,5%). A presença da listra não descartou completamente a distribuição de cores anterior - <strong>apenas atualizou as probabilidades</strong>. O mesmo deveria ter acontecido com Tom.</p>
+<p>Digamos que no ano de entrada de Tom na faculdade existam 200 alunos de administração e 20 de Engenharia, por mais que a descrição de Tom seja compatível com 100% dos estudantes de engenharia (<em>nota do autor: posso confirmar</em>) e apenas 10% dos estudantes de administração - <strong>a probabilidade ainda é 50/50</strong>, porque representam 20 estudantes de engenharia e 20 de administração!</p>
+<p>É justamente esse princípio básico que norteia toda a <strong>estatística bayesiana</strong>.</p>
+<p>Thomas Bayes foi um pastor presbiteriano inglês que viveu no século XVIII. Entre rezas, o professo desenvolveu uma teoria para a probabilidade condicional, ou seja, como saber a probabilidade de que algo aconteça, sabendo que uma outra coisa já aconteceu. Formulando matematicamente o <strong>Teorema de Bayes</strong>, ficaria assim:</p>
+<p>$$ P(A|B) = \frac{P(B|A) P(A)}{P(B)}$$</p>
+<p>Ou, em português: A probabilidade de que aconteça o evento A, sabendo que já aconteceu o evento B, P(A|B), é igual à probabilidade de que aconteça A, P(A), vezes a probabilidade de que aconteça B, dado que A já aconteceu, P(B|A), dividido pela probabilidade de que aconteça B, P(B). Podemos pensar na fórmula como uma proporção: De todas as vezes que B acontece, quantas acontecem depois de A? Pegue esse número e multiplique pela probabilidade de A, chegando assim ao valor atualizado!</p>
+<p>Pode parecer confuso, explicando assim, mas a gente acabou de fazer esse exato exemplo, com as bolinhas coloridas.</p>
+<p>Vamos reorganizar o enunciado, para ficar mais claro:</p>
+<blockquote>
+<p>Qual a probabilidade de que uma bolinha com listras, escolhida aleatoriamente do pote, seja azul?</p>
+</blockquote>
+<p>Aplicamos Bayes!</p>
+<ol>
+<li><strong>P(azul|listra):</strong> esse é o valor que queremos encontrar, a probabilidade de que uma bolinha listrada seja azul.</li>
+<li><strong>P(azul):</strong> anteriormente vimos que, das 100 bolinhas no pote, 50 são azuis. Portanto essa probabilidade é 50%.</li>
+<li><strong>P(listra|azul):</strong> aqui, queremos saber qual a probabilidade de que uma bolinha azul seja listrada. Isso também foi dado pelo problema, como apenas 20% das bolinhas azuis são listradas, essa probabilidade é, também, 20%.</li>
+<li><strong>P(listra):</strong> As bolinhas listradas são 8 vermelhas, 16 verdes e 10 azuis - 34 no total. Portanto, dividimos pelo número total de bolinhas, 100, e encontramos que essa probabilidade é de 34%.</li>
+</ol>
+<p>Basta colocar tudo na fórmula acima e <em>voilà</em>!</p>
+<p>$$ P(azul|listra) = \frac{P(listra|azul) P(azul)}{P(listra)} = \frac{0,2 \times 0,5}{0,34} = 0,294 $$</p>
+<p>Parabéns, você acabou de <em>reencontrar</em> o mesmo número, só que de forma muito mais difícil. Brincadeiras a parte, não é a toa que o teorema de Bayes é chamado de <strong>&ldquo;bom senso aplicado à matemática&rdquo;</strong>, é uma boa forma de garantir que seu pensamento é coerente - particularmente nos casos mais complicados de fazer uma verificação simples!</p>
+<figure class="align-center ">
+    <img loading="lazy" src="https://imgs.xkcd.com/comics/frequentists_vs_bayesians_2x.png#center" width="auto"/> 
+</figure>
+
+<p><a href="https://xkcd.com/1132/"><strong>XKCD Nº 1132: Frequentistas vs. Bayesianos.</strong></a> <em>Verdadeiramente, bom senso aplicado.</em></p>
+<p>Um bom caso de estudo para esse ramo da estatística está relacionado aos <strong>testes médicos</strong>, como os testes de COVID, que tanto nos acostumamos a fazer nos últimos anos. Mas não é só nisso que o bom pastor pode te ajudar, ele também pode aumentar suas chances de conseguir um carro novo*!</p>
+<p>* <em>Essa situação é bastante específica, qualquer não obtenção de um veículo novo não é responsabilidade do autor ou do pastor.</em></p>
+<h3 id="como-interpretar-um-teste-positivo">Como interpretar um teste positivo?<a hidden class="anchor" aria-hidden="true" href="#como-interpretar-um-teste-positivo">#</a></h3>
+<p>Temos o costume de ver testes médicos como sentenças: Se o resultado deu positivo, nós temos a doença ou condição que o exame estava testando. Mas isso não é tão preto no branco - tanto é que médicos normalmente pedem para você repetir exames com resultados inesperados, em especial para condições que tenham consequências mais graves.</p>
+<p>Normalmente, nós só pensamos em um único número, a acurácia do teste, mas, no fundo, durante os testes clínicos são computados quatro números relevantes:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"><strong>Verdadeiro</strong></th>
+<th style="text-align:center"><strong>Falso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Positivo</strong></td>
+<td style="text-align:center">O teste identificou a doença corretamente</td>
+<td style="text-align:center">O teste identificou a doença erroneamente</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Negativo</strong></td>
+<td style="text-align:center">O teste não identificou a doença quando não deveria</td>
+<td style="text-align:center">O teste não identificou a doença quando deveria</td>
+</tr>
+</tbody>
+</table>
+<p>Em especial, focamos em testes sensíveis: <strong>é melhor um alarme falso, resolvido facilmente com um segundo teste, do que não identificar casos em que a doença está presente, agravando o quadro</strong>. Isso gera um número de <strong>Falsos Positivos</strong> comumente maior do que o número de <strong>Falsos Negativos</strong> e, ambos, se tudo estiver certo, bastante menores do que os resultados verdadeiros.</p>
+<p>Pense em uma doença que afete 1 a cada 1000 pessoas no seu grupo - Doenças raramente podem ser tratadas como homogêneas na população. Poderíamos, de forma simplificada, assumir que você tem 1/1000 chances de pegar a doença, portanto a probabilidade de você estar com a doença é de 0,1%. Mas a médica que está te atendendo é uma pessoa cautelosa, e te pede para fazer um teste mesmo assim.</p>
+<p>Lendo o manual de uso, você vê que os testes clínicos foram feitos em 2000 pessoas, das quais 50 estavam doentes. Nesses testes, a sensibilidade foi de 96% e a especificidade foi de 90%. Após uma rápida pesquisa, você vê que <strong>sensibilidade</strong> é uma outra palavra para o <strong>Verdadeiro Positivo</strong> e <strong>especificidade</strong>, outra palavra para <strong>Verdadeiro Negativo</strong>, então, você reconstrói a tabela com os números do teste:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"><strong>Verdadeiro</strong></th>
+<th style="text-align:center"><strong>Falso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Positivo</strong></td>
+<td style="text-align:center">0,96 (Sensibilidade)</td>
+<td style="text-align:center">0,1  (1 - Especificidade)</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Negativo</strong></td>
+<td style="text-align:center">0,90 (Especificidade)</td>
+<td style="text-align:center">0,04 (1 - Sensibilidade)</td>
+</tr>
+</tbody>
+</table>
+<p>Note que a probabilidade de ser verdadeiro ou falso deve ser 100%, por isso que a taxa de falsos negativos deve ser 100% menos a sensibilidade. Isso pode ficar mais claro usando números: Se o teste tem uma taxa de verdadeiros positivos de 96%, significa que das 50 pessoas que estão doentes, o teste irá identificar corretamente 48 e deixará de identificar 2, fazendo com que essas sejam as falsas negativas, conta similar ocorre para a especificidade.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"><strong>Verdadeiro</strong></th>
+<th style="text-align:center"><strong>Falso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Positivo</strong></td>
+<td style="text-align:center">48  pessoas</td>
+<td style="text-align:center">195 pessoas</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Negativo</strong></td>
+<td style="text-align:center">1.755  pessoas</td>
+<td style="text-align:center">2 pessoas</td>
+</tr>
+</tbody>
+</table>
+<p>Depois de fazer o <em>mise en place</em>, você faz o teste e verifica que ele dá positivo. Em qual grupo você está? No das 48 pessoas que realmente têm a doença, ou na das 195 que não têm? Bom, isso quem irá dizer é a profissional da saúde, mas você aquietar um pouco a ansiedade, atualizando aquela probabilidade de 0,1% usando a fórmula de Bayes: Qual a probabilidade de que você esteja doente, ao receber um teste positivo, P(doente|positivo)?</p>
+<ol>
+<li><strong>P(doente):</strong> essa é a probabilidade que chamamos <em>à priori</em>, ou seja, antes do teste. Nesse caso era de 0,1%.</li>
+<li><strong>P(positivo|doente):</strong> Aqui tratamos da probabilidade de, estando doente, seu teste ser positivo - Em outras palavras, a sensibilidade do teste: 96%.</li>
+<li><strong>P(positivo):</strong> Por fim, a probabilidade do teste dar positivo. Aqui é útil a construção da tabelinha: Dos 2.000 voluntários, 48 foram verdadeiros positivos e 195, falsos positivos, portanto a probabilidade é (48 + 195)/2000, 12,15%.</li>
+</ol>
+<p>Assim, aplicando os números à fórmula:</p>
+<p>$$ P(doente|positivo) = \frac{P(positivo|doente) P(doente)}{P(positivo)} = \frac{0,96 \times 0,001}{0,1215} = 0,0079 $$</p>
+<p>Ou seja, embora o teste aumente em quase 8 vezes sua chance de ter a doença, a grande proporção de falsos positivos para verdadeiros positivos significa que, ao positivar o teste, a probabilidade de ser um resultado falso é alta. Significando que não é uma sentença, mas uma <strong>atualização de probabilidade</strong>. Claro, se você continuar fazendo testes e o resultado continuar sendo positivo, sua chance de ter a doença aumenta bastante: No segundo positivo, 6,24% e no terceiro, 49,3%. Isso motiva a realização de mais testes!</p>
+<h3 id="o-problema-de-monty-hall">O problema de Monty Hall<a hidden class="anchor" aria-hidden="true" href="#o-problema-de-monty-hall">#</a></h3>
+<p>Agora, vamos falar do tal carro novo. Mas, antes, eu preciso te preparar: acontece que a situação a seguir é polêmica - causou acaloradas cartas e reações de professores de estatística, quando foi enunciada pela primeira vez, e causou uma acalorada discussão entre eu e minha namorada, quando eu contei pra ela sobre o problema. Prossiga com cuidado ⚠️.</p>
+<p>Tudo começa com um quadro de perguntas e respostas em uma revista americana chamado <em>Ask Marilyn</em>. Marilyn vos Savant, reverenciada pelo seu QI altíssimo, respondia dúvidas gerais dos leitores, pense em algo como um <em>google-antes-do-google</em>. Em certo momento chega a seguinte pergunta, inspirada em um famoso programa de TV, <em>Let&rsquo;s make a Deal</em>, apresentado por um carismático <em>host</em>, Monty Hall:</p>
+<blockquote>
+<p>Suponha que os participantes de um programa de auditório recebam a opção de escolher uma dentre três portas: atrás de uma delas há um carro; atrás das outras, há cabras. Depois que um dos participantes escolhe uma porta, o apresentador, que sabe o que há atrás de cada porta, abre uma das portas não escolhidas, revelando uma cabra. Ele diz ao participante: &ldquo;Você gostaria de mudar sua escolha para a outra porta fechada?&rdquo;. Para o participante, é vantajoso trocar sua escolha?</p>
+</blockquote>
+<p>Tudo que <em>intuitivamente</em> sabemos sobre probabilidades, nos diz o seguinte:</p>
+<ol>
+<li>Há chances iguais do prêmio estar nas três portas, portanto, a probabilidade de prêmio é de 33,3% para cada porta.</li>
+<li>Uma vez que uma das portas é eliminada, sobram duas portas com iguais probabilidades, portanto, cada uma delas tem uma probabilidade de 50% de conter o prêmio.</li>
+<li>Como há 50% de chance de acertar a porta, não é vantajoso trocar, nem se manter - ambas opções apresentam o mesmo benefício.</li>
+</ol>
+<p>Mas - lembrando que a matemática nem sempre é intuitiva - Marylin causou muita confusão ao afirmar que é mais vantajoso trocar a escolha. E não é por pouco, não: <strong>você tem 2 vezes mais chance de ganhar o carro, se trocar a porta escolhida</strong>. Antes que você, como muitos outros, comece a xingá-la, dizendo que ela não sabe de nada, saiba que sua afirmação está, na verdade, correta. E a estatística Bayesiana pode te ajudar a entender o porquê.</p>
+<p>Tudo começa com uma premissa básica: O apresentador, Monty Hall, não está abrindo portas ao acaso. Se fosse o caso, ele correria o risco de abrir a porta do carro, sem querer, o que tira toda a graça do jogo. Então nós precisamos nos atentar ao fato de que ele sabe onde está o carro. Embora isso não mude a percepção intuitiva do problema, pois ainda existem duas portas e um único prêmio, quando colocamos na ponta do lápis, esse detalhe fica bastante relevante.</p>
+<p>Suponha que o participante escolheu a porta 2, ao passo que o apresentador abriu a porta 3, mostrando uma cabra pacientemente comendo um pouco de palha. Como a probabilidade do carro estar atrás da porta de número 1 se altera, diante da nova evidência da porta 3- P(p1|p3)?</p>
+<ol>
+<li>
+<p><strong>P(p1):</strong> Começamos com chances iguais para as três portas, então mantemos esse valor - a probabilidade de que o carro esteja atrás da porta 1 é de 33,3%.</p>
+</li>
+<li>
+<p><strong>P(p3|p1):</strong> Aqui está o pulo do gato, qual a probabilidade de que a porta 3 seja aberta, caso o prêmio esteja atrás da porta 1?</p>
+<ul>
+<li>O apresentador não pode abrir a porta 2, que você escolheu, porque é contra as regras.</li>
+<li>O apresentador não pode abrir a porta 1, pois o prêmio está nela e ele não quer revelá-lo.</li>
+</ul>
+<p>Nesse caso, a única porta que pode ser aberta é a 3, ou seja, essa probabilidade é 100%!</p>
+</li>
+<li>
+<p><strong>P(p3):</strong> Ignorando agora a localização do prêmio, qualquer uma das duas portas não escolhidas poderiam ser abertas, fazendo com que a probabilidade da porta 3 ser aberta seja 50%.</p>
+</li>
+</ol>
+<p>Compilando isso tudo na nossa querida formuleta:</p>
+<p>$$ P(p1|p3) = \frac{P(p3|p1) P(p1)}{P(p3)} = \frac{0,333 \times 1}{0,5} = 0,666 $$</p>
+<p>Como vemos, a probabilidade de você ter errado, e o prêmio estar atrás da porta de número 1, é de 66,6%, portanto é <strong>mais vantajoso aceitar a troca, ao ser perguntado pelo apresentador</strong>. Fazendo as contas para o caso contrário (P(p2|p3)), a probabilidade da porta 3 ser aberta é de 50%, pois o apresentador pode abrir qualquer uma das duas livremente, fazendo assim com que sua chance seja de 1 em 3 - 33,3%.</p>
+<p>Note que esse é um caso particular do teorema. Quando enunciei a fórmula pela primeira vez, a descrevi como uma proporção do evento B, nesse caso específico em que o evento A não influencia o evento B, o evento B também não influencia o evento A - fazendo que que P(B|A) e P(B) se cancelem e P(A|B) seja igual à P(A). Até nisso Bayes foi bem sucedido em formular o bom senso matemáticamente, afinal, não é qualquer coisa que influencia as probabilidades. Não é só porque o <a href="https://www.nationalgeographic.com/science/article/nick-cage-movies-vs-drownings-and-more-strange-but-spurious-correlations">Nicolas Cage lançou um filme novo, que mais pessoas vão morrer afogadas</a> (o que não siginifica que não haja uma correlação entre as duas coisas, mas isso é um papo para outro momento).</p>
+<h2 id="conclusão">Conclusão<a hidden class="anchor" aria-hidden="true" href="#conclusão">#</a></h2>
+<p>Viver como um ser lógico e estóico não é muito simples, nossa própria mente prega truques ao tentar poupar energia usando o Sistema 1 para responder rapidamente os dilemas do dia-a-dia. Uma boa forma de ativar o Sistema 2 é tentando adicionar a lógica formal e a matemática no seu raciocínio, e o teorema de Bayes é particularmente bom nisso.</p>
+<p>Hoje, inclusive, existe quase que um culto à filosofia bayesiana de vida, algumas pessoas realmente norteiam suas vidas usando esse conceito da estatística.</p>
+<p>Não é necessário, no entanto, se inscrever numa seita para tomar decisões melhores, ou interpretar resultados de forma mais correta, usando o teorema. Uma compreensão de que <strong>novas evidências atualizam probabilidades antigas, ao invés de substituí-las</strong> pode nos levar muito longe, ajudando a desmistificar os viéses cognitivos da nossa mente!</p>
+<h2 id="fontes">Fontes<a hidden class="anchor" aria-hidden="true" href="#fontes">#</a></h2>
+<p><a href="https://www.youtube.com/watch?v=HZGCoVF3YvM">Bayes theorem, the geometry of changing beliefs</a>, <strong>3Blue1Brown</strong>, 2019-12-22 (Acesso em Agosto de 2023).</p>
+<p>Rápido e devagar: duas formas de pensar, <strong>Daniel Kahneman</strong>, 2012.</p>
+<p>O andar do bêbado, <strong>Leonard Mlodinow</strong>, 2009.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://pfalcao97.githubpages.io/blog/tags/estat%C3%ADstica/">Estatística</a></li>
+      <li><a href="https://pfalcao97.githubpages.io/blog/tags/matem%C3%A1tica/">Matemática</a></li>
+      <li><a href="https://pfalcao97.githubpages.io/blog/tags/economia/">Economia</a></li>
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O prognóstico por representatividade on twitter"
+        href="https://twitter.com/intent/tweet/?text=O%20progn%c3%b3stico%20por%20representatividade&amp;url=https%3a%2f%2fpfalcao97.githubpages.io%2fblog%2fposts%2festatistica_bayesiana%2f&amp;hashtags=Estat%c3%adstica%2cMatem%c3%a1tica%2cEconomia">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O prognóstico por representatividade on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fpfalcao97.githubpages.io%2fblog%2fposts%2festatistica_bayesiana%2f&amp;title=O%20progn%c3%b3stico%20por%20representatividade&amp;summary=O%20progn%c3%b3stico%20por%20representatividade&amp;source=https%3a%2f%2fpfalcao97.githubpages.io%2fblog%2fposts%2festatistica_bayesiana%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O prognóstico por representatividade on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fpfalcao97.githubpages.io%2fblog%2fposts%2festatistica_bayesiana%2f&title=O%20progn%c3%b3stico%20por%20representatividade">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O prognóstico por representatividade on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fpfalcao97.githubpages.io%2fblog%2fposts%2festatistica_bayesiana%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O prognóstico por representatividade on whatsapp"
+        href="https://api.whatsapp.com/send?text=O%20progn%c3%b3stico%20por%20representatividade%20-%20https%3a%2f%2fpfalcao97.githubpages.io%2fblog%2fposts%2festatistica_bayesiana%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O prognóstico por representatividade on telegram"
+        href="https://telegram.me/share/url?text=O%20progn%c3%b3stico%20por%20representatividade&amp;url=https%3a%2f%2fpfalcao97.githubpages.io%2fblog%2fposts%2festatistica_bayesiana%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://pfalcao97.githubpages.io/blog">Blog de Pedro Falcão</a></span>
+    <span>
+        Powered by
+        
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a>,
+        <a href="https://pages.github.com/" rel="noopener noreferrer" target="_blank">Github Pages</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copiar';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copiado!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copiar';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+<br>
+</body>
+
+</html>
