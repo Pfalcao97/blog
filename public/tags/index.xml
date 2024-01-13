@@ -5,22 +5,31 @@
     <link>https://pfalcao97.githubpages.io/blog/tags/</link>
     <description>Recent content in Tags on Blog de Pedro Falcão</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 12 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pfalcao97.githubpages.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pfalcao97.githubpages.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Estatística</title>
-      <link>https://pfalcao97.githubpages.io/blog/tags/estat%C3%ADstica/</link>
-      <pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate>
+      <title>Airflow</title>
+      <link>https://pfalcao97.githubpages.io/blog/tags/airflow/</link>
+      <pubDate>Wed, 29 Nov 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://pfalcao97.githubpages.io/blog/tags/estat%C3%ADstica/</guid>
+      <guid>https://pfalcao97.githubpages.io/blog/tags/airflow/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Matemática</title>
-      <link>https://pfalcao97.githubpages.io/blog/tags/matem%C3%A1tica/</link>
-      <pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate>
+      <title>Engenharia de Dados</title>
+      <link>https://pfalcao97.githubpages.io/blog/tags/engenharia-de-dados/</link>
+      <pubDate>Wed, 29 Nov 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://pfalcao97.githubpages.io/blog/tags/matem%C3%A1tica/</guid>
+      <guid>https://pfalcao97.githubpages.io/blog/tags/engenharia-de-dados/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>https://pfalcao97.githubpages.io/blog/tags/sql/</link>
+      <pubDate>Wed, 29 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pfalcao97.githubpages.io/blog/tags/sql/</guid>
       <description></description>
     </item>
     
@@ -30,6 +39,24 @@
       <pubDate>Wed, 09 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://pfalcao97.githubpages.io/blog/tags/economia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Estatística</title>
+      <link>https://pfalcao97.githubpages.io/blog/tags/estat%C3%ADstica/</link>
+      <pubDate>Wed, 09 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pfalcao97.githubpages.io/blog/tags/estat%C3%ADstica/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Matemática</title>
+      <link>https://pfalcao97.githubpages.io/blog/tags/matem%C3%A1tica/</link>
+      <pubDate>Wed, 09 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pfalcao97.githubpages.io/blog/tags/matem%C3%A1tica/</guid>
       <description></description>
     </item>
     
@@ -48,15 +75,6 @@
       <pubDate>Sat, 08 Jul 2023 00:00:00 +0000</pubDate>
       
       <guid>https://pfalcao97.githubpages.io/blog/tags/regex/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SQL</title>
-      <link>https://pfalcao97.githubpages.io/blog/tags/sql/</link>
-      <pubDate>Sat, 08 Jul 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://pfalcao97.githubpages.io/blog/tags/sql/</guid>
       <description></description>
     </item>
     
