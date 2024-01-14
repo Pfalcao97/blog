@@ -1,16 +1,16 @@
 ---
 author: "Pedro Falcão"
 title: "MLOps - Um projeto introdutório"
-date: "2024-01-19"
+date: "2024-01-13"
 description: "Aplicando DevOps ao mundo do Aprendizado de Máquina"
 tags: ["MLOps", "DevOps", "Machine Learning"]
 categories: ["Programação"]
-aliases: ["mlops-introductory"]
+aliases: ["mlops-introduction"]
 draft: false
 
 cover:
     image: "https://github.com/Pfalcao97/blog/blob/main/static/cover_mlops.png?raw=true"
-    alt: "A estatística bayesiana"
+    alt: "MLops"
 ---
 
 # Introdução
@@ -80,6 +80,7 @@ O livro Practical MLOps, uma das maiores fontes de informação desse texto, faz
 Para MLOps, é a mesma coisa, segundo os autores.
 
 {{< figure align="center" src="https://github.com/Pfalcao97/blog/blob/main/static/maslow_mlops.png?raw=true" width="auto" >}}
+_Practical MLOPs, Noah Gift e Alfredo Deza, 2021._
 
 O Engenheiro precisa ser proficiente em DevOps e ter as ferramentas e dados à disposição. Não faz sentido querer implementar um esteira de aprendizado de máquina, sem ao menos ter os dados da sua companhia à disposição para treinar/usar o modelo implantado!
 
