@@ -6,7 +6,7 @@ description: "Aplicando DevOps ao mundo do Aprendizado de Máquina"
 tags: ["MLOps", "DevOps", "Machine Learning"]
 categories: ["Programação"]
 aliases: ["mlops-introduction"]
-draft: false
+draft: true
 
 cover:
     image: "https://github.com/Pfalcao97/blog/blob/main/static/cover_mlops.png?raw=true"
