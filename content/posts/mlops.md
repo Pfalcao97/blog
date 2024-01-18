@@ -2,11 +2,11 @@
 author: "Pedro Falcão"
 title: "MLOps - Um projeto introdutório"
 date: "2024-01-13"
-description: "Aplicando DevOps ao mundo do Aprendizado de Máquina"
+description: "Aplicando DevOps no mundo do Aprendizado de Máquina"
 tags: ["MLOps", "DevOps", "Machine Learning"]
 categories: ["Programação"]
 aliases: ["mlops-introduction"]
-draft: true
+draft: false
 
 cover:
     image: "https://github.com/Pfalcao97/blog/blob/main/static/cover_mlops.png?raw=true"
@@ -94,7 +94,7 @@ Mas, na minha visão particular, a relação entre o Cientista de Dados e o Enge
 
 Surge um problema de negócio, o analista de dados entende o problema e quais são os recursos necessários para solucioná-lo. O engenheiro de dados cria o ETL e disponibiliza os dados para consumo contínuo. Se for necessário, ele disponibiliza microsserviços para incrementar a solução. O analista pode entregar a dashboard para a área de negócio, com a certeza de que os dados continuarão a ficar disponíveis, por conta do trabalho dos engenheiros.
 
-Analogamente: surge um problema de negócio, o cientista de dados entende o problema e quais são os recursos necessários para solucioná-lo, talvez até desenvolvendo um `jupyter notebook` com uma análise e modelo preliminares. O Engenheiro de _Machine Learning_, a partir dessas especificações, vai transformar o `notebook` em um microsserviço conteinerizado com um fluxo de dados limpos e corretos em uma _feature store_ e uma programação de re-treinamento contínuo, para garantir a qualidade do modelo, mesmo com o fluxo de novos dados. Assim, o cientista tem acesso ao microsserviço do modelo, que pode ser aplicado a novos dados para gerar relatórios e informações estratégicas para a área de negócio, com a segurança garantida por todo o processo de DevOps.
+Analogamente: surge um problema de negócio, o cientista de dados entende o problema e quais são os recursos necessários para solucioná-lo, talvez desenvolvendo um `jupyter notebook` com uma análise e modelo preliminares. O Engenheiro de _Machine Learning_, a partir dessas especificações, vai transformar o `notebook` em microsserviços conteinerizados com um fluxo de dados limpos e corretos em uma _feature store_ e uma programação de re-treinamento contínuo, para garantir a qualidade do modelo, mesmo com o fluxo de novos dados. Assim, o cientista tem acesso ao microsserviço do modelo, que pode ser aplicado a novos dados para gerar relatórios e informações estratégicas para a área de negócio, com a segurança garantida por todo o processo de DevOps.
 
 Ou seja, a ideia é a mesma nos dois casos: um dos profissionais cuida da parte mais humana e de negócio (entender o problema, abstrair a solução necessária, desenvolver os requerimentos, realizar análises) e o outro está mais focado na parte técnica (aplicar boas práticas de DevOps, garantir a estabilidade do processo, monitorar e corrigir erros). 
 
@@ -113,6 +113,7 @@ O que eu **vou** conseguir fazer e, portanto, minha proposta é: **desenvolver u
 Vou, também, me permitir tomar alguns atalhos. Ao invés de treinar uma LLM do zero, vou aproveitar da plataforma _Hugging Face_ que já possui uma grande variedade de modelos prontos, inclusive em português, pra poder focar no processo de implantação de um aplicativo à nuvem. A nuvem escolhida, inclusive, é a da Google, _Google Cloud Plataform_ (GCP), justamente por conta do _free tier_ ser suficiente para esse projetinho simples.
 
 ### O modelo
+[_Código do modelo disponível aqui_](https://github.com/Pfalcao97/mlops-example/blob/main/main.py)
 
 Tudo começa no hub do [Hugging Face](https://huggingface.co/), uma grande comunidade de compartilhamento de código para aplicações de ML. Para quem vem da área de análise de dados, dá pra pensar como sendo o equivalente do Kaggle. A missão deles, segundo sua própria página, é democratizar o *bom* aprendizado de máquina.
 
@@ -155,6 +156,7 @@ sentiment_classifier("Nossa, eu gosto muito de estudar MLOps")
 Ou seja, o modelo também funciona bem em português!
 
 ### A entrega
+[_Código do webapp disponível aqui_](https://github.com/Pfalcao97/mlops-example/blob/main/main.py)
 
 Com o modelo em mãos, podemos começar a pensar em formas de deixá-lo disponível aos usuários. Existem diversas opções, desde dashboards e bots até **webapps**; essa última sendo a mais comum e, portanto, a minha escolha.
 
@@ -218,13 +220,14 @@ Para executar o código e ser capaz de interagir com o nosso aplicativo, precisa
 uvicorn app:app --reload
 ```
 
-### contêinerizando o código
+### Contêinerizando o código
+[_Código do Dockerfile disponível aqui_](https://github.com/Pfalcao97/mlops-example/blob/main/Dockerfile)
 
 Tudo que foi construido agora deve ser empacotado em algo homogêneo. Muitos programadores já passaram pela experiência de compartilhar um código com outra pessoa e receber a devolutiva de que não está funcionando como deveria, ou algo assim, ao que a cartilha nos manda responder um sonoro: _"Pois na minha máquina estava funcionado..."_.
 
 Em um ambiente de DevOps, isso simplesmente **não** pode acontecer, se o código de produção e o código local têm comportamentos distintos, os testes e correções locais não podem ser considerados como representativos do ambiente de produção e, portanto, não podem ser implantados de maneira ágil - e isso faz com que a metodologia perca todo o sentido.
 
-Pra garantir essa paridade foram desenvolvidos os contêineres: de forma simplificada são como máquinas virtuais super leves que agregam o código e todas suas dependências, **exatamente da forma como elas foram definidas pelo programador**. Esse é o poder do Docker: independente da máquina, a mesma imagem e o mesmo código têm o mesmo comportamento. Para quem já programa, uma comparação que ajuda a entender a funcionalidade são os ambientes virtuais, como o `venv` do Python, em que você cria um ambiente apartado do "resto" da sua máquina e pode, assim, garantir que não haverão interações danosas entre dependências!
+Pra garantir essa paridade foram desenvolvidos os contêineres: em uma simplificação um pouco grosseira são como máquinas virtuais super leves que agregam o código, suas dependências e todo o ambiente de execução necessário, **exatamente da forma como eles foram definidos pelo programador**. Esse é o poder do Docker: independente da máquina, a mesma imagem e o mesmo código têm o mesmo comportamento. Para quem já programa, uma comparação que ajuda a entender a funcionalidade são os ambientes virtuais, como o `venv` do Python, em que você cria um ambiente apartado do "resto" da sua máquina e pode, assim, garantir que não haverão interações danosas entre dependências!
 
 A criação do contêiner é feita através de um arquivo especial, o `Dockerfile`, nele são definidas as instruções necessárias para montar o nosso pacote, _tim-tim por tim-tim_. Inclusive fica mais fácil de entender o `Dockefile` ao pensar nele como uma receita, mesmo!
 
@@ -291,6 +294,7 @@ O que eu estou dizendo, em linguagem simples, é:
 > Em uma imagem simplificada e leve do Python, crie a pasta "mlops", copie todos os arquivos para ela, instale as dependências e exponha a porta 8000. Em seguida execute o `uvicorn` para ativar o webserver.
 
 ### Github (+ actions)
+[_Código do yml disponível aqui_](https://github.com/Pfalcao97/mlops-example/blob/main/.github/workflows/google-cloudrun-docker.yml)
 
 Então, chegamos àquele momento gostoso no fim de todo código:
 
@@ -372,7 +376,10 @@ DevOps, porém, é um tema que eu tenho me aprofundado cada vez mais, seja no co
 
 Creio que eu não fui capaz de ilustrar todos os principais conceitos necessários para colocar um modelo na nuvem de forma segura e robusta, mas, acho que consegui introduzir o tema, afinal, essa aplicação que eu criei já está disponível e pode ser acessada por qualquer pessoa, podendo ser útil em diversos contextos. Claro, não vou disponibilizar o link de acesso, pois eu respeito minha carteira e não quero ninguém enchendo a URL de chamados que serão prontamente cobrados ao fim do mês pela Google, mas, em um contexto empresarial, essa aplicação poderia ser disponibilizada facilmente e o modelo estaria perfeitamente utilizável!
 
-Existe toda uma parte de treinamento, validação cruzada e verificação que, ao usar um modelo pronto, eu não precisei me preocupar, mas na maioria dos casos, quando estamos resolvendo problemas reais, são a parte que mais importa. Apesar disso, existem pilhas e mais pilhas de conteúdo para quem quer aprender a treinar modelos do zero, enquanto que a parte de implantação e MLOps, como um todo, ainda não é tão difundida, principalmente em português. Nesse sentido, acredito ter cumprido com o que me propus, mas, de qualquer forma, fico à disposição caso surja alguma dúvida, vamos continuar conversando [lá no meu LinkedIn](https://www.linkedin.com/in/pfalcao97/)!
+Existe toda uma parte de treinamento, validação cruzada e verificação que, ao usar um modelo pronto, eu não precisei me preocupar, mas na maioria dos casos, quando estamos resolvendo problemas reais, são a parte que mais importa. Apesar disso, existem pilhas e mais pilhas de conteúdo para quem quer aprender a treinar modelos do zero, enquanto que a parte de implantação e MLOps, como um todo, ainda não é tão difundida, principalmente em português. Nesse sentido, acredito ter cumprido com o que me propus!
+
+
+Te convido a olhar [o código](https://github.com/Pfalcao97/mlops-example/tree/main), estudar, tentar fazer um fork para replicar este (ou outros) resultados e, como sempre, fico à disposição pra gente continuar essa conversa [lá no meu LinkedIn](https://www.linkedin.com/in/pfalcao97/)!
 
 # Citações
 
